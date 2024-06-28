@@ -1,23 +1,20 @@
 
 import { expect, test } from 'vitest';
-import { createUserClient, noCookieClient } from './apiClient';
+import { noCookieClient } from './apiClient';
 import { GET, POST } from './utils';
 
 test(GET(noCookieClient.novel), async () => {
-  const { userClient, cleanUp } = await createUserClient();
-  const res = await userClient.$get();
+  const res = await noCookieClient.novel.$get();
 
-  expect(res).toEqual('');
+  expect(res).toEqual('Hello');
 
-  await cleanUp();
+
 });
 
 test(POST(noCookieClient.novel), async () => {
-  const { userClient, cleanUp } = await createUserClient();
-  const aozoraUrl = 'abc'
-  const res = await userClient.health.$get();
+  const aozoraUrl = 'aaa'
+  const res = await noCookieClient.novel.$post({ body: {aozoraUrl}});
 
   expect(res).toEqual(aozoraUrl);
 
-  await cleanUp();
 });
