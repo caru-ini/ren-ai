@@ -4,7 +4,7 @@ import { GET, POST } from './utils';
 
 test(GET(noCookieClient.novel), async () => {
   const res = await noCookieClient.novel.$get();
-  expect(res).toEqual('string');
+  expect(res).toEqual('Hello');
 });
 
 test(POST(noCookieClient.novel), async () => {
